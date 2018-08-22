@@ -1,0 +1,25 @@
+#!/bin/bash
+
+set -e
+
+if [ -f ~/.vimrc ]; then
+    echo "prior .vimrc detected, backing up as 'vim-backup'"
+    mv ~/.vimrc vimrc-backup
+fi
+
+if [ -f ~/.tmux.conf ]; then
+    echo "prior .tmux.conf detected, backing up as 'tmux-backup'"
+    mv ~/.tmux.conf tmux-backup
+fi
+
+ln -s $PWD/vimrc ~/.vimrc
+echo "created symlink for .vimrc"
+
+ln -s $PWD/tmux.conf ~/.tmux.conf
+echo "created symlink for .tmux.conf"
+
+mkdir -p ~/.vim/colors
+cp monokain.vim ~/.vim/colors
+echo "copied monokain theme into ~/.vim/colors"
+
+echo "done!"
