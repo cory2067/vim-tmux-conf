@@ -26,8 +26,4 @@ else
     echo "created symlink for .tmux.conf"
 fi
 
-mkdir -p ~/.vim/colors
-cp monokain.vim ~/.vim/colors
-echo "copied monokain theme into ~/.vim/colors"
-
 echo "done!"
