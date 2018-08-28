@@ -55,9 +55,5 @@ syntax enable
 if $COLORTERM == 'gnome-terminal'
     set t_Co=256
 endif
-try
-    colorscheme monokain
-catch
-    colorscheme pablo
-endtry
-set background=dark
+
+colorscheme desert
