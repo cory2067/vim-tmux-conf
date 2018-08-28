@@ -1,4 +1,5 @@
-set tabstop=4 shiftwidth=4 expandtab smarttab
+" Tab/indent settings
+set tabstop=4 shiftwidth=4 expandtab smarttab smartindent
 
 " Auto strip excess whitespace
 autocmd BufWritePre * :%s/\s\+$//e
@@ -43,6 +44,17 @@ function! NumberToggle()
 endfunc
 
 map <leader>n :call NumberToggle()<cr>
+
+" Toggle with ,t: Switch between 4 space and 2 space tab (4 by default)
+function! TabToggle()
+  if(&tabstop == 2)
+    set tabstop=4 shiftwidth=4
+  else
+    set tabstop=2 shiftwidth=2
+  endif
+endfunc
+
+map <leader>t :call TabToggle()<cr>
 
 " Pressing ,s will toggle and untoggle spell checking
 map <leader>s :setlocal spell!<cr>
