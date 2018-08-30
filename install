@@ -2,6 +2,22 @@
 
 set -e
 
+if [ ! -d ~/.tmux/plugins/tpm ]; then
+    echo "installing tmux plugin manager"
+    git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+fi
+
+if [ -z "$(dpkg -l | grep xsel)" ]; then
+    if [ -n "$(uname -a | grep -i linux)" ]; then
+        echo "installing tmux-yank dependencies"
+        sudo apt-get install xsel
+    else
+        echo "----- WARNING -----"
+        echo "can't automatically install tmux-yank dependencies on non-linux"
+        echo "refer to: https://github.com/tmux-plugins/tmux-yank"
+    fi
+fi
+
 if [ -f ~/.vimrc ]; then
     echo "prior .vimrc detected, backing up as 'vim-backup'"
     mv ~/.vimrc vimrc-backup
@@ -25,5 +41,8 @@ else
     ln -s $PWD/tmux.conf ~/.tmux.conf
     echo "created symlink for .tmux.conf"
 fi
+
+echo "installing plugins..."
+~/.tmux/plugins/tpm/bindings/install_plugins
 
 echo "done!"

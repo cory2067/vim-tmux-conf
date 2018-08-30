@@ -6,7 +6,6 @@ autocmd BufWritePre * :%s/\s\+$//e
 
 set ttymouse=xterm2
 set mouse=a
-set autoread
 
 let mapleader = ","
 let g:mapleader = ","
