@@ -1,9 +1,6 @@
 " Tab/indent settings
 set tabstop=4 shiftwidth=4 expandtab smarttab smartindent
 
-" Auto strip excess whitespace
-autocmd BufWritePre * :%s/\s\+$//e
-
 set ttymouse=xterm2
 set mouse=a
 
@@ -54,6 +51,9 @@ function! TabToggle()
 endfunc
 
 map <leader>t :call TabToggle()<cr>
+
+" Call with ,w: Strip all excess whitespace
+map <leader>w :%s/\s\+$//e<cr>
 
 " Pressing ,s will toggle and untoggle spell checking
 map <leader>s :setlocal spell!<cr>
