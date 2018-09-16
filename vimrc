@@ -52,6 +52,17 @@ endfunc
 
 map <leader>t :call TabToggle()<cr>
 
+" Toggle with ,p: Paste mode
+function! PasteToggle()
+  if(&paste == 1)
+    set nopaste
+  else
+    set paste
+  endif
+endfunc
+
+map <leader>p :call PasteToggle()<cr>
+
 " Call with ,w: Strip all excess whitespace
 map <leader>w :%s/\s\+$//e<cr>
 
@@ -68,3 +79,7 @@ if $COLORTERM == 'gnome-terminal'
 endif
 
 colorscheme desert
+
+" Override search color
+hi Search ctermbg=Yellow
+hi Search ctermfg=Red
