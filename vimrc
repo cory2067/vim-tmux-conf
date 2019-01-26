@@ -52,6 +52,17 @@ endfunc
 
 map <leader>t :call TabToggle()<cr>
 
+" Trigger with ,r: Replace all tabs with spaces
+function! ReplaceTabs()
+  if(&tabstop == 2)
+    :%s/\t/  /g
+  else
+    :%s/\t/    /g
+  endif
+endfunc
+
+map <leader>r :call ReplaceTabs()<cr>
+
 " Toggle with ,p: Paste mode
 function! PasteToggle()
   if(&paste == 1)
